@@ -26,6 +26,16 @@ secondEntry = Entry(root, width= 3 , font=("Calibri",20, "bold"), textvariable=s
 secondEntry.place(x=130, y=30)
 
 def submit():
+
+    # Disable the command for the button so it can no longer be clicked
+    btn.config(command="")
+    
+
+    # Disable changing the values after the clock has been started
+    hourEntry.config(state="disabled")
+    minuteEntry.config(state="disabled")
+    secondEntry.config(state="disabled")
+
     try:
         # The input provided by the user is stored in temp
         temp = int(hour.get()) * 3600 + int(minute.get()) *60 + int(second.get())
