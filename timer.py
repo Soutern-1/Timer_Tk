@@ -26,12 +26,8 @@ secondEntry = Entry(root, width= 3 , font=("Calibri",20, "bold"), textvariable=s
 secondEntry.place(x=130, y=30)
 
 def submit():
-
-    # Disable the command for the button so it can no longer be clicked
     btn.config(command="")
-    
 
-    # Disable changing the values after the clock has been started
     hourEntry.config(state="disabled")
     minuteEntry.config(state="disabled")
     secondEntry.config(state="disabled")
@@ -65,6 +61,12 @@ def submit():
         # when temp value = 0, then a message pops up, that notifies the user saying time is up. 
         if (temp==00):
             tkinter.messagebox.showinfo("messagebox", "Your timer is up!")
+
+            # Reset the readonly widgets
+            hourEntry.config(state="normal")
+            minuteEntry.config(state="normal")
+            secondEntry.config(state="normal")
+            btn.config(command=submit)
 
         # Every second, the value of temp will decrease by one
         temp -=1
